@@ -1,0 +1,85 @@
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardview_item_folder"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:layout_marginTop="35dp"
+    android:layout_marginBottom="5dp"
+
+    app:cardCornerRadius="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@id/txtNewFolder"
+    app:layout_constraintBottom_toTopOf="@id/btnSaveNewFolder" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <Button
+            android:id="@+id/btnUploadFirebase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Condividi\n su Firebase"
+            android:layout_marginEnd="7dp"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:drawableLeft="@android:drawable/ic_menu_upload"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnDownloadFirebase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salva\nOffline"
+            android:layout_marginEnd="7dp"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:drawableLeft="@android:drawable/stat_sys_download"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageItemFolder"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_image_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txtTitleItemFolder"
+            />
+
+
+        <TextView
+            android:id="@+id/txtTitleItemFolder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:hint="Inserisci il nome della cartella"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageItemFolder"
+            app:layout_constraintTop_toBottomOf="@+id/deleteItemFolder" />
+
+        <ImageButton
+            android:id="@+id/deleteItemFolder"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_baseline_close_24"
+            android:backgroundTint="#636161"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

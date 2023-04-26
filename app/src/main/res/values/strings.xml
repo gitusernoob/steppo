@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Steppo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_folder">new folder</string>
+    <string name="guida_crea_cartella">1) inserisci il titolo della cartella\n\n2) clicca sull\' immagine per selezionare l\'immagine di anteprima della cartella\n\n3) salva la cartella</string>
+</resources>

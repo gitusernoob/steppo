@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="20sp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:elevation="10dp"
+                android:id="@+id/imageButtonDeleteStep"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_baseline_close_24"/>
+
+
+            <ImageView
+                android:id="@+id/imageItemStep"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_image_24"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnChooseImageStep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="scegli\nimmagine"
+                android:layout_margin="5dp"
+                app:layout_constraintEnd_toEndOf="@id/imageItemStep"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="@id/imageItemStep" />
+
+            <EditText
+                android:id="@+id/editTxtTitleItemStep"
+                android:layout_width="0dp"
+                android:textColor="#7E7878"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Titolo"
+                android:visibility="gone"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@id/imageButtonDeleteStep"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageItemStep"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="#7E7878"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/editTxtDescriptionItemStep"
+                android:text="Descrizione "
+
+                app:layout_constraintTop_toBottomOf="@id/editTxtTitleItemStep"
+                tools:layout_editor_absoluteX="10dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="salva scheda"
+                style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/btnSaveStep"
+                android:textAllCaps="false"
+                android:textColor="#ED8094A0"
+                android:backgroundTint="@android:color/transparent"
+                app:layout_constraintTop_toBottomOf="@id/editTxtDescriptionItemStep"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="15dp"
+                android:textSize="20sp"
+
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/TxtTitleItemStep"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:textColor="#7E7878"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Titolo"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnSaveStep"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="#7E7878"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/TxtDescriptionItemStep"
+                android:text="Descrizione "
+                app:layout_constraintTop_toBottomOf="@id/TxtTitleItemStep"
+                tools:layout_editor_absoluteX="10dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="modifica scheda"
+                style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/btnModifyStep"
+                android:textAllCaps="false"
+                android:textColor="#ED8094A0"
+                android:backgroundTint="@android:color/transparent"
+                app:layout_constraintTop_toBottomOf="@id/TxtDescriptionItemStep"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="15dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnNewCardDownItemStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aggiungi scheda"
+        android:textAllCaps="false"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

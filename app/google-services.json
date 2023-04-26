@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "4778538029",
+    "project_id": "steppo-4f2be",
+    "storage_bucket": "steppo-4f2be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4778538029:android:3101d9e7b5e21fd211b4a4",
+        "android_client_info": {
+          "package_name": "com.example.steppo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4778538029-o8f3n1q8gfvvin3fi6vr4nsjmahgq7dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL80sNgiYfOy-aGcHxGk_t8dnH0bCuUIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "4778538029-o8f3n1q8gfvvin3fi6vr4nsjmahgq7dh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
