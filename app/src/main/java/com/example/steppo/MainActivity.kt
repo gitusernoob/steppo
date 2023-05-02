@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        //se non ci sono cartelle nel database aggiunge 3 tre cartelle, e 5 tutorial esempio per uso offline
         val folderDao = MyAppDatabase.getInstance(applicationContext).folderDao()
         val tutorialDao = MyAppDatabase.getInstance(applicationContext).tutorialDao()
         val stepDao = MyAppDatabase.getInstance(applicationContext).stepDao()
@@ -75,6 +77,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun populateDatabase(){
         val assetManager = assets
+
+        Toast.makeText(applicationContext, "attendi qualche secondo... sto popolando il database", Toast.LENGTH_SHORT).show()
 
         val folderDao = MyAppDatabase.getInstance(applicationContext).folderDao()
         val tutorialDao = MyAppDatabase.getInstance(applicationContext).tutorialDao()
@@ -115,6 +119,10 @@ class MainActivity : AppCompatActivity() {
         val tutorialId4 = UUID.randomUUID()
         uri = saveImageGiveMeUri("stepFirebaseTutorial.png")
         arrayListTutorial.add(Tutorial(tutorialId4, folderId2.toString(),"collega la tua app a Firebase", uri.toString(),Calendar.getInstance().time))
+
+        val tutorialId5 = UUID.randomUUID()
+        uri = saveImageGiveMeUri("stepGithubTutorial.png")
+        arrayListTutorial.add(Tutorial(tutorialId5, folderId1.toString(),"carica la tua app su github", uri.toString(),Calendar.getInstance().time))
 
         //aggiungo Steps
         var arrayListStep  = ArrayList<Step>()
@@ -183,9 +191,28 @@ class MainActivity : AppCompatActivity() {
         uri = saveImageGiveMeUri("stepFirebase11.png")
         arrayListStep.add(Step(UUID.randomUUID(), tutorialId4.toString(),null, uri.toString(),"aggiungi queste librerie per realtime database", 11, Calendar.getInstance().time))
 
+        //tutorial5 carica app su github
+        uri = saveImageGiveMeUri("stepGithub1.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"segui le istruzioni fino al punto 6", 1, Calendar.getInstance().time))
+        uri = saveImageGiveMeUri("stepGithub2.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"non c'è più il supporto per l'autenticazione tramite password. serve un token se no da errore", 2, Calendar.getInstance().time))
+
+        uri = saveImageGiveMeUri("stepGithub4.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"vai su github -> settings", 4, Calendar.getInstance().time))
+        uri = saveImageGiveMeUri("stepGithub5.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"vai su developer settings", 5, Calendar.getInstance().time))
+        uri = saveImageGiveMeUri("stepGithub6.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"genera nuovo token", 6, Calendar.getInstance().time))
+        uri = saveImageGiveMeUri("stepGithub7.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"inserisci 'note' metti expiration quanto preferisci, seleziona tutto le caselle sotto", 7, Calendar.getInstance().time))
+        uri = saveImageGiveMeUri("stepGithub8.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"copia il token", 8, Calendar.getInstance().time))
+        uri = saveImageGiveMeUri("stepGithub9.png")
+        arrayListStep.add(Step(UUID.randomUUID(), tutorialId5.toString(),null, uri.toString(),"inserisci al posto della password", 9, Calendar.getInstance().time))
 
 
 
+        //inserisce nel database i dati delle cartelle, tutorial e passaggi tutorial
         CoroutineScope(Dispatchers.IO).launch {
             for (i in arrayListFolder){
                 repository.insert(i)

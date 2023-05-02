@@ -84,6 +84,7 @@ class FolderCreateFragment : Fragment() {
             val repository = MyAppRepository(folderDao, tutorialDao, stepDao)
             repository.insert(folder)
         }
+        fragmentManager?.popBackStack()
         //MyAppDatabase.getInstance(requireContext()).folderDao().insert(folder)
     }
 

@@ -52,7 +52,6 @@ class TutorialsListFragment : Fragment(), TutorialListAdapter.ItemClickListener 
 
         //recupero id folder per associarci tutorial
         val folderId = requireArguments().getString("folderId")
-
         //invio l'id della cartella al fragment per creare nuovi tutorial
         binding.btnNewTutorial.setOnClickListener {
 
@@ -146,7 +145,7 @@ class TutorialsListFragment : Fragment(), TutorialListAdapter.ItemClickListener 
 
                 println("url immagine tutorial: $uri")
 
-                // Create a map of tutorial properties
+
                 val tutorialMap = mapOf(
                     "id" to tutorial.id.toString(),
                     "folderId" to tutorial.folderId,
@@ -164,62 +163,17 @@ class TutorialsListFragment : Fragment(), TutorialListAdapter.ItemClickListener 
                 // Upload steps for the tutorial
                 val stepsRef = tutorialsRef.child(tutorialId).child("steps")
                 uploadSteps(stepsRef, tutorial.id.toString())
+
+                Toast.makeText(requireContext(), "tutorial salvato su firebase", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener { exception ->
             println("Upload failed: ${exception.message}")
         }
-        /*
-        val storage = FirebaseStorage.getInstance().reference
-        println("storageref: $storage")
-        val uploadUri = Uri.fromFile(File(tutorial.image.toString()))
-        val imageRef = storage.child("images/${UUID.randomUUID()}.jpg")
-        println("uri image: ${tutorial.image}")
-        val uploadTask = imageRef.putFile(uploadUri)
-        uploadTask.addOnSuccessListener { taskSnapshot ->
-            tutorial.image = taskSnapshot.storage.downloadUrl.toString()
-            println(tutorial.image)
-            val tutorialMap = mapOf(
-                "id" to tutorial.id.toString(),
-                "folderId" to tutorial.folderId,
-                "title" to tutorial.title,
-                "image" to tutorial.image,
-                "date" to tutorial.date?.time
-            )
-               // Write the tutorial to the database
-            val tutorialsRef =  FirebaseDatabase.getInstance("https://steppo-4f2be-default-rtdb.europe-west1.firebasedatabase.app").getReference("tutorials")
-            val tutorialId = tutorialsRef.push().key
-            tutorialsRef.child(tutorialId!!).setValue(tutorialMap).addOnSuccessListener { println("qua ho aggiunto il tutorial sul realtima ") }
-            val stepsRef = tutorialsRef.child(tutorialId).child("steps")
 
-            uploadSteps(stepsRef, tutorial.id.toString())
-
-        }
-        */
 
     }
 
-    /*
-    //scaricare l'immagine
-    val imageUrl = tutorial.image // Replace with the image URL from your Tutorial object
-    val storageRef = storage.getReferenceFromUrl(imageUrl)
-    val localFile = File.createTempFile("images", "jpg")
-    storageRef.getFile(localFile).addOnSuccessListener {
-        // Do something with the downloaded file (e.g. display it in an ImageView)
-    }.addOnFailureListener {
-        // Handle any errors that occur during the download
-    }
 
-    //eliminare l'immagine
-    val imageUrl = tutorial.image // Replace with the image URL from your Tutorial object
-    val storageRef = storage.getReferenceFromUrl(imageUrl)
-    storageRef.delete().addOnSuccessListener {
-        // The image was deleted successfully
-    }.addOnFailureListener {
-        // Handle any errors that occur during the deletion
-    }
-    //.... devo prendere
-
-         */
     /*
     struttura Firebase
 
@@ -240,8 +194,6 @@ class TutorialsListFragment : Fragment(), TutorialListAdapter.ItemClickListener 
      */
 
     private fun uploadSteps(stepRef : DatabaseReference, tutorialId: String){
-
-        //val refSteps = FirebaseDatabase.getInstance().getReference("steps").get
 
 
         val folderDao = MyAppDatabase.getInstance(requireContext()).folderDao()
@@ -276,23 +228,7 @@ class TutorialsListFragment : Fragment(), TutorialListAdapter.ItemClickListener 
                 }.addOnFailureListener {
                     println("problema con upload immagine")
                 }
-                /* codice con problema Url
-                val uploadUri = Uri.fromFile(File(j.image.toString()))
-                val imageRef = storage.reference.child("images/${UUID.randomUUID()}.jpg")
-                val uploadTask = imageRef.putFile(uploadUri)
-                uploadTask.addOnSuccessListener { taskSnapshot ->
 
-                    println("stepref: $stepRef")
-                    val stepMap = mapOf(
-                        "tutorialId" to j.tutorialId.toString(),
-                        "title" to j.tutorialId,
-                        "image" to taskSnapshot.storage.downloadUrl.toString(),
-                        "description" to j.description,
-                        "stepNumber" to j.stepNumber,
-                        "date" to j.date
-                    )
-                    stepRef.push().setValue(stepMap).addOnSuccessListener { println("sono riuscito a caricare qualcosa") }
-                }*/
             }
         }
 

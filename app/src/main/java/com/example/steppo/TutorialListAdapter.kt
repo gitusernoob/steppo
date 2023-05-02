@@ -24,14 +24,18 @@ class TutorialHolder(private val binding : ItemFolderBinding, private val listen
 
     fun bindToItem(tutorial: Tutorial, context: Context){
 
-        binding.txtTitleItemFolder.text = tutorial.title
-        binding.btnUploadFirebase.visibility = Button.VISIBLE
 
+        //collega immagine, titolo e visualizza il tasto per upload
         try {
             binding.imageItemFolder.setImageURI(tutorial.image!!.toUri())
         }catch (e : Exception){
             println(e)
         }
+
+        binding.txtTitleItemFolder.text = tutorial.title
+        binding.btnUploadFirebase.visibility = Button.VISIBLE
+
+        //visualizza gli step quando viene cliccato un tutorial
         binding.root.setOnClickListener{
             val stepListFragment = StepFragment()
             val bundle = Bundle()
@@ -44,10 +48,12 @@ class TutorialHolder(private val binding : ItemFolderBinding, private val listen
                 .commit()
         }
 
+        //nel fragment tutorialListFragment viene gestita l'eliminazione del tutorial e degli step associati
         binding.deleteItemFolder.setOnClickListener {
             listener.btnClicked(tutorial, adapterPosition, "deleteItemTutorial")
         }
 
+        //nel fragment tutorialListFragment viene gestita l'upload su firebase del tutorial'
         binding.btnUploadFirebase.setOnClickListener {
             listener.btnClicked(tutorial,adapterPosition,"btnUploadFirebase")
         }

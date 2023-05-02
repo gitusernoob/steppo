@@ -24,7 +24,7 @@ import java.util.*
 class TutorialCreateFragment : Fragment() {
 
     private val PICK_IMAGE_REQUEST = 12332 // request code for picking an image from the gallery
-    private lateinit var imageUri: Uri // variable to hold the selected image URI
+    private lateinit var imageUri: Uri
 
 
     private var _binding: FragmentTutorialCreateBinding? = null
@@ -35,7 +35,7 @@ class TutorialCreateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding = FragmentTutorialCreateBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -56,14 +56,14 @@ class TutorialCreateFragment : Fragment() {
 
     }
 
-    // Override the onActivityResult method to handle the result of the image selection activity
+    //gestisci l'immagine selezionata
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
-            imageUri = data.data!! // get the selected image URI
+            imageUri = data.data!!
 
-            // Display the selected image in your ImageView
+            //mostra immagine nell'image view
             Glide.with(requireContext()).load(imageUri).into(binding.imageTutorialPreview)
         }
     }
@@ -84,7 +84,8 @@ class TutorialCreateFragment : Fragment() {
 
             repository.insert(tutorial)
         }
-        //MyAppDatabase.getInstance(requireContext()).folderDao().insert(folder)
+        fragmentManager?.popBackStack()
+
     }
 
     private fun saveImageToInternalStorage(drawableId:Int):Uri{
